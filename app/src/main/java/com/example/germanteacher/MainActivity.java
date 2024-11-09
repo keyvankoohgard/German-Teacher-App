@@ -57,5 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void PlaySounds(int id){
         MediaPlayer mediaPlayer = MediaPlayer.create(this, id);
         mediaPlayer.start();
+        // Release the MediaPlayer resource after the sound has finished playing
+        mediaPlayer.setOnCompletionListener(mp -> {
+            mp.release();
+        });
     }
 }
